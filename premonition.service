@@ -1,0 +1,16 @@
+[Unit]
+Description=Lancaster County Pending Dispatch Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/premonition.env
+ExecStart=/usr/bin/python3 /home/riley/git/lancaster_county_pending_dispatch_bot/premonition.py
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
